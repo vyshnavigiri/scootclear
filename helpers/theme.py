@@ -12,7 +12,6 @@ def apply_page_config(title="ScootClear"):
     """Set up the page with our custom title and layout."""
     st.set_page_config(
         page_title=title,
-        page_icon="🛴",
         layout="wide",
         initial_sidebar_state="collapsed",
     )
