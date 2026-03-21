@@ -1,0 +1,13 @@
+# .streamlit/config.toml
+# This forces the app to always use light theme
+# regardless of the user's system/browser settings.
+# Without this, Streamlit might use dark mode on some
+# devices, making our dark text invisible on light backgrounds.
+
+[theme]
+base = "light"
+primaryColor = "#0d6efd"
+backgroundColor = "#f0f7ff"
+secondaryBackgroundColor = "#e0f2fe"
+textColor = "#1e293b"
+font = "sans serif"
