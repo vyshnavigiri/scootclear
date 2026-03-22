@@ -122,19 +122,19 @@ def apply_custom_css():
         }
 
         /* EXCEPTIONS: Keep light text inside dark-background sections */
-        .top-nav, .top-nav * { color: #e2e8f0; }
+        .top-nav, .top-nav * { color: #ffffff; }
         .top-nav .brand { color: #06d6a0 !important; }
         .top-nav .brand small { color: #64748b !important; }
-        .nav-links a { color: #e2e8f0 !important; }
+        .nav-links a { color: #ffffff !important; }
         .nav-links a.active { color: #0a1628 !important; }
         .nav-links a.report-btn { color: #0a1628 !important; }
 
-        .impact-section, .impact-section * { color: #e2e8f0 !important; }
+        .impact-section, .impact-section * { color: #ffffff !important; }
         .impact-section h4 { color: #06d6a0 !important; }
         .impact-section h3 { color: #ffffff !important; }
         .impact-section p { color: #94a3b8 !important; }
-        .tag { color: #e2e8f0 !important; }
-        .muni-item { color: #e2e8f0 !important; }
+        .tag { color: #ffffff !important; }
+        .muni-item { color: #ffffff !important; }
 
         /* === END OF TEXT FIX === */
 
