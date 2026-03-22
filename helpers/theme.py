@@ -12,6 +12,7 @@ def apply_page_config(title="ScootClear"):
     """Set up the page with our custom title and layout."""
     st.set_page_config(
         page_title=title,
+        page_icon="🛴",
         layout="wide",
         initial_sidebar_state="collapsed",
     )
@@ -32,53 +33,58 @@ def apply_custom_css():
         }
         .block-container {
             max-width: 1100px;
-            padding-top: 0.5rem;
+            padding-top: 0rem;
+        }
+
+        /* --- Hide the Streamlit top bar gap --- */
+        .stApp header {
+            background-color: transparent;
+        }
+        [data-testid="stHeader"] {
+            background-color: transparent;
         }
 
         /* ==============================================
-           FIX: Force dark text on ALL Streamlit elements
-           This prevents invisible text when the user's
-           device defaults to dark mode.
+           DARK-MODE TEXT FIX
+           Strategy: Only target STREAMLIT's own components
+           (form labels, widget text, native markdown).
+           Do NOT target generic tags like div, span, p
+           because those break our custom HTML sections.
            ============================================== */
 
-        /* All headings */
-        .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6 {
+        /* Streamlit headings (h1-h6 rendered by st.markdown) */
+        .stApp h1, .stApp h2, .stApp h3,
+        .stApp h4, .stApp h5, .stApp h6 {
             color: #1e293b !important;
         }
 
-        /* All body text, paragraphs, spans, labels */
-        .stApp p, .stApp span, .stApp label, .stApp div {
-            color: #1e293b;
-        }
-
-        /* Streamlit markdown text */
-        .stApp .stMarkdown, .stApp .stMarkdown p,
-        .stApp [data-testid="stMarkdownContainer"],
-        .stApp [data-testid="stMarkdownContainer"] p,
-        .stApp [data-testid="stMarkdownContainer"] span,
-        .stApp [data-testid="stMarkdownContainer"] li,
-        .stApp [data-testid="stMarkdownContainer"] strong,
-        .stApp [data-testid="stMarkdownContainer"] em {
+        /* Streamlit's own markdown container text */
+        [data-testid="stMarkdownContainer"] > p,
+        [data-testid="stMarkdownContainer"] > ul > li,
+        [data-testid="stMarkdownContainer"] > ol > li,
+        [data-testid="stMarkdownContainer"] > blockquote > p {
             color: #1e293b !important;
         }
 
-        /* Streamlit form labels and input labels */
+        /* Streamlit form labels and widget labels */
         .stApp .stTextInput label,
         .stApp .stTextArea label,
         .stApp .stSelectbox label,
         .stApp .stNumberInput label,
         .stApp .stFileUploader label,
-        .stApp [data-testid="stWidgetLabel"],
-        .stApp [data-testid="stWidgetLabel"] p {
+        .stApp .stRadio label,
+        .stApp .stCheckbox label,
+        [data-testid="stWidgetLabel"],
+        [data-testid="stWidgetLabel"] p {
             color: #1e293b !important;
         }
 
         /* Streamlit captions and help text */
-        .stApp .stCaption, .stApp small {
+        .stApp .stCaption, .stApp .stCaption p {
             color: #64748b !important;
         }
 
-        /* Streamlit selectbox, text input, number input text */
+        /* Streamlit form inputs */
         .stApp input, .stApp textarea, .stApp select,
         .stApp [data-baseweb="select"] span,
         .stApp [data-baseweb="input"] input,
@@ -86,25 +92,19 @@ def apply_custom_css():
             color: #1e293b !important;
         }
 
-        /* Streamlit toggle labels */
-        .stApp [data-testid="stCheckbox"] label span,
-        .stApp .stToggle label span {
+        /* Streamlit toggle/checkbox labels */
+        .stApp [data-testid="stCheckbox"] label span {
             color: #1e293b !important;
         }
 
-        /* Streamlit info, warning, error, success boxes */
+        /* Streamlit alert boxes (st.info, st.warning, etc.) */
         .stApp .stAlert p, .stApp .stAlert span {
             color: #1e293b !important;
         }
 
-        /* Streamlit dataframe text */
+        /* Streamlit dataframe */
         .stApp .stDataFrame {
             color: #1e293b;
-        }
-
-        /* Streamlit blockquote text */
-        .stApp blockquote, .stApp blockquote p {
-            color: #ffffff !important;
         }
 
         /* Streamlit tab labels */
@@ -113,51 +113,59 @@ def apply_custom_css():
         }
 
         /* File uploader text */
-        .stApp [data-testid="stFileUploader"] div,
-        .stApp [data-testid="stFileUploader"] span,
-        .stApp [data-testid="stFileUploader"] small,
         .stApp [data-testid="stFileUploaderDropzone"] div,
-        .stApp [data-testid="stFileUploaderDropzone"] span {
+        .stApp [data-testid="stFileUploaderDropzone"] span,
+        .stApp [data-testid="stFileUploaderDropzone"] small {
             color: #1e293b !important;
         }
 
-        /* EXCEPTIONS: Keep light text inside dark-background sections */
-        .top-nav, .top-nav * { color: #ffffff; }
-        .top-nav .brand { color: #06d6a0 !important; }
-        .top-nav .brand small { color: #64748b !important; }
-        .nav-links a { color: #ffffff !important; }
-        .nav-links a.active { color: #0a1628 !important; }
-        .nav-links a.report-btn { color: #0a1628 !important; }
-
-        .impact-section, .impact-section * { color: #ffffff !important; }
-        .impact-section h4 { color: #06d6a0 !important; }
-        .impact-section h3 { color: #ffffff !important; }
-        .impact-section p { color: #94a3b8 !important; }
-        .tag { color: #ffffff !important; }
-        .muni-item { color: #ffffff !important; }
+        /* ==============================================
+           DARK-BACKGROUND SECTIONS
+           Any section with class "dark-section" will
+           have all its text forced to light colours.
+           Use this class on any dark-background HTML.
+           ============================================== */
+        .dark-section { color: #e2e8f0; }
+        .dark-section div { color: #e2e8f0; }
+        .dark-section span { color: #e2e8f0; }
+        .dark-section p { color: #e2e8f0; }
+        .dark-section strong { color: #ffffff; }
+        .dark-section em { color: #cbd5e1; }
+        .dark-section h1, .dark-section h2,
+        .dark-section h3, .dark-section h4 { color: #ffffff !important; }
 
         /* === END OF TEXT FIX === */
+
 
         /* --- Top navigation bar --- */
         .top-nav {
             background: linear-gradient(135deg, #0a1628 0%, #0f2744 100%);
             padding: 12px 24px;
-            border-radius: 0 0 12px 12px;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 20px;
             flex-wrap: wrap;
             gap: 8px;
+            /* Break out of the Streamlit container to go full width */
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            width: 100vw;
+            padding-left: max(24px, calc((100vw - 1100px) / 2 + 24px));
+            padding-right: max(24px, calc((100vw - 1100px) / 2 + 24px));
         }
+        .top-nav, .top-nav div, .top-nav span, .top-nav a { color: #e2e8f0; }
         .top-nav .brand {
             font-size: 1.4rem;
             font-weight: 800;
+            color: #06d6a0;
         }
         .top-nav .brand small {
             font-size: 0.65rem;
             display: block;
             font-weight: 400;
+            color: #64748b;
         }
         .nav-links {
             display: flex;
@@ -166,6 +174,7 @@ def apply_custom_css():
             align-items: center;
         }
         .nav-links a {
+            color: #e2e8f0;
             text-decoration: none;
             padding: 6px 14px;
             border-radius: 6px;
@@ -177,25 +186,28 @@ def apply_custom_css():
         }
         .nav-links a.active {
             background: #06d6a0;
+            color: #0a1628;
             font-weight: 600;
         }
         .nav-links a.report-btn {
             background: #06d6a0;
+            color: #0a1628;
             font-weight: 600;
             border-radius: 20px;
             padding: 6px 18px;
         }
 
-        /* --- Info cards --- */
+        /* --- Info cards (light background, dark text) --- */
         .info-card {
             background: #e8f4fd;
             border-left: 4px solid #0d6efd;
             border-radius: 8px;
             padding: 12px 16px;
             margin-bottom: 10px;
-            color: #1e293b !important;
+            color: #1e293b;
         }
-        .info-card * { color: #1e293b !important; }
+        .info-card strong { color: #1e293b; }
+        .info-card em { color: #334155; }
 
         .warning-card {
             background: #fef3c7;
@@ -203,9 +215,9 @@ def apply_custom_css():
             border-radius: 8px;
             padding: 12px 16px;
             margin-bottom: 10px;
-            color: #1e293b !important;
+            color: #1e293b;
         }
-        .warning-card * { color: #1e293b !important; }
+        .warning-card strong { color: #1e293b; }
 
         .danger-card {
             background: #fef2f2;
@@ -213,9 +225,9 @@ def apply_custom_css():
             border-radius: 8px;
             padding: 12px 16px;
             margin-bottom: 10px;
-            color: #1e293b !important;
+            color: #1e293b;
         }
-        .danger-card * { color: #1e293b !important; }
+        .danger-card strong { color: #1e293b; }
 
         .success-card {
             background: #d1fae5;
@@ -223,9 +235,9 @@ def apply_custom_css():
             border-radius: 8px;
             padding: 12px 16px;
             margin-bottom: 10px;
-            color: #1e293b !important;
+            color: #1e293b;
         }
-        .success-card * { color: #1e293b !important; }
+        .success-card strong { color: #1e293b; }
 
         /* --- Stat boxes on landing page --- */
         .stat-row {
@@ -244,11 +256,11 @@ def apply_custom_css():
         .stat-box .number {
             font-size: 2rem;
             font-weight: 800;
-            color: #0d6efd !important;
+            color: #0d6efd;
         }
         .stat-box .label {
             font-size: 0.8rem;
-            color: #64748b !important;
+            color: #64748b;
             margin-top: 2px;
         }
 
@@ -270,46 +282,7 @@ def apply_custom_css():
             margin-top: 0;
         }
         .feature-card p {
-            color: #64748b !important;
-            font-size: 0.9rem;
-        }
-
-        /* --- Impact section (dark background - keep light text) --- */
-        .impact-section {
-            background: #0a1628;
-            border-radius: 12px;
-            padding: 24px;
-            margin: 15px 0;
-        }
-        .impact-section h4 {
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            margin-bottom: 4px;
-        }
-        .impact-section h3 {
-            margin-top: 0;
-        }
-        .impact-section p {
-            font-size: 0.9rem;
-        }
-        .tag {
-            display: inline-block;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 6px;
-            padding: 6px 14px;
-            margin: 4px;
-            font-size: 0.85rem;
-        }
-
-        /* --- Municipality list items (inside dark section) --- */
-        .muni-item {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 10px 16px;
-            margin-bottom: 8px;
+            color: #64748b;
             font-size: 0.9rem;
         }
 
@@ -323,8 +296,8 @@ def apply_custom_css():
             border-radius: 10px;
             border: 1px solid #bae6fd;
             margin: 10px 0;
+            color: #1e293b;
         }
-        .score-display * { color: #1e293b !important; }
         .score-number {
             font-size: 2.2rem;
             font-weight: 800;
@@ -339,9 +312,10 @@ def apply_custom_css():
             padding: 24px;
             text-align: center;
             margin: 15px 0;
+            color: #1e293b;
         }
-        .upcoming-badge * { color: #1e293b !important; }
         .upcoming-badge h2 { color: #0369a1 !important; }
+        .upcoming-badge p { color: #334155; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -352,7 +326,6 @@ def show_top_navigation(current_page="Home"):
     current_page should be one of: Home, Report Issue, Hotspot Map,
     Re-Routing Alerts, Community Impact, For Cities
     """
-    # Build nav links - mark the current page as "active"
     pages = {
         "Home": "/",
         "Report Issue": "/Report_Issue",
@@ -370,7 +343,6 @@ def show_top_navigation(current_page="Home"):
             css_class = ""
         links_html += f'<a href="{url}" class="{css_class}">{name}</a> '
 
-    # The "Report Now" button on the right
     report_link = '<a href="/Report_Issue" class="report-btn">Report Now</a>'
 
     st.markdown(f"""

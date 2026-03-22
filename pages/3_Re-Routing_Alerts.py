@@ -30,8 +30,8 @@ st.markdown("""
 st.markdown("### What are Re-Routing Alerts?")
 
 st.markdown("""
-Based on valuable feedback from **Spinal Cord Injury Ontario**, we are developing 
-a re-routing alert system inspired by how the **TTC posts notices when an elevator 
+Based on valuable feedback from **Spinal Cord Injury Ontario**, we are developing
+a re-routing alert system inspired by how the **TTC posts notices when an elevator
 is down** and suggests alternate accessible routes.
 """)
 
@@ -40,7 +40,7 @@ st.markdown("### How it will work:")
 st.markdown("""
 <div class="info-card">
     <strong>1. Automatic Detection</strong><br>
-    When an area receives multiple obstruction reports (hitting our threshold), 
+    When an area receives multiple obstruction reports (hitting our threshold),
     the system will automatically generate an alert for that street or intersection.
 </div>
 """, unsafe_allow_html=True)
@@ -49,8 +49,8 @@ st.markdown("""
 <div class="info-card">
     <strong>2. Alert Message</strong><br>
     Users approaching the area will see a message like:<br>
-    <em>"⚠️ Obstruction reported on King St near Spadina. 
-    Please consider re-routing your path to another street to avoid 
+    <em>"⚠️ Obstruction reported on King St near Spadina.
+    Please consider re-routing your path to another street to avoid
     accessibility barriers in this area."</em>
 </div>
 """, unsafe_allow_html=True)
@@ -58,8 +58,8 @@ st.markdown("""
 st.markdown("""
 <div class="info-card">
     <strong>3. Suggested Alternate Routes</strong><br>
-    The system will suggest nearby accessible streets that have fewer 
-    reported obstructions — similar to how Google Maps shows transit 
+    The system will suggest nearby accessible streets that have fewer
+    reported obstructions — similar to how Google Maps shows transit
     disruptions.
 </div>
 """, unsafe_allow_html=True)
@@ -67,7 +67,7 @@ st.markdown("""
 st.markdown("""
 <div class="info-card">
     <strong>4. Active Alerts Map</strong><br>
-    A map showing all currently active re-routing alerts across the GTA, 
+    A map showing all currently active re-routing alerts across the GTA,
     colour-coded by severity.
 </div>
 """, unsafe_allow_html=True)
@@ -76,17 +76,23 @@ st.markdown("""
 st.markdown("### Why this matters")
 
 st.markdown("""
-<div class="impact-section">
-    <h4>Feedback from Spinal Cord Injury Ontario</h4>
-    <h3>Real challenges faced by wheelchair users</h3>
-    <p>
-        When a sidewalk is blocked, wheelchair users have to track back and find 
-        an alternate route, which can be very time-consuming. Sometimes there is 
-        no alternate route and they are forced to go down a curb — which is unsafe. 
+<div class="dark-section" style="
+    background: #0a1628;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 15px 0;
+">
+    <h4 style="color:#06d6a0; text-transform:uppercase; font-size:0.75rem;
+        letter-spacing:2px; margin-bottom:4px;">Feedback from Spinal Cord Injury Ontario</h4>
+    <h3 style="margin-top:0;">Real challenges faced by wheelchair users</h3>
+    <p style="color:#94a3b8; font-size:0.9rem;">
+        When a sidewalk is blocked, wheelchair users have to track back and find
+        an alternate route, which can be very time-consuming. Sometimes there is
+        no alternate route and they are forced to go down a curb — which is unsafe.
         Construction zones are especially problematic, particularly in downtown Toronto.
     </p>
-    <p style="margin-top: 12px;">
-        A re-routing system would help by warning people <strong>before</strong> 
+    <p style="color:#94a3b8; font-size:0.9rem; margin-top: 12px;">
+        A re-routing system would help by warning people <strong>before</strong>
         they reach the obstruction, saving time and keeping them safe.
     </p>
 </div>
@@ -95,9 +101,9 @@ st.markdown("""
 # --- Future integration note ---
 st.markdown("""
 <div class="warning-card">
-    <strong>🔮 Future Vision:</strong> We hope to eventually integrate this 
-    with <strong>Google Maps</strong> so that re-routing alerts show up when 
-    someone looks up a route — just like how transit disruptions currently appear. 
+    <strong>🔮 Future Vision:</strong> We hope to eventually integrate this
+    with <strong>Google Maps</strong> so that re-routing alerts show up when
+    someone looks up a route — just like how transit disruptions currently appear.
     This was recommended by SCI Ontario as the best way to reach the most people.
 </div>
 """, unsafe_allow_html=True)

@@ -24,20 +24,38 @@ st.markdown("ScootClear is designed for the people who need safe sidewalks most.
 # WHO WE SERVE
 # ============================================================
 st.markdown("""
-<div class="impact-section">
-    <h4>Accessibility Impact</h4>
-    <h3>Designed for the people who need safe sidewalks most</h3>
-    <p>
+<div class="dark-section" style="
+    background: #0a1628;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 15px 0;
+">
+    <h4 style="color:#06d6a0; text-transform:uppercase; font-size:0.75rem;
+        letter-spacing:2px; margin-bottom:4px;">Accessibility Impact</h4>
+    <h3 style="margin-top:0;">Designed for the people who need safe sidewalks most</h3>
+    <p style="color:#94a3b8; font-size:0.9rem;">
         ScootClear is built around public safety, inclusive mobility, and
         equitable access to city spaces. Our community includes:
     </p>
     <div style="margin-top: 15px;">
-        <span class="tag">♿ Wheelchair users</span>
-        <span class="tag">👴 Seniors</span>
-        <span class="tag">👶 Parents with strollers</span>
-        <span class="tag">🦯 Visually impaired pedestrians</span>
-        <span class="tag">🧑‍🦽 People with spinal cord injuries</span>
-        <span class="tag">🦿 Mobility device users</span>
+        <span style="display:inline-block; background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+            padding:6px 14px; margin:4px; font-size:0.85rem;">♿ Wheelchair users</span>
+        <span style="display:inline-block; background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+            padding:6px 14px; margin:4px; font-size:0.85rem;">👴 Seniors</span>
+        <span style="display:inline-block; background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+            padding:6px 14px; margin:4px; font-size:0.85rem;">👶 Parents with strollers</span>
+        <span style="display:inline-block; background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+            padding:6px 14px; margin:4px; font-size:0.85rem;">🦯 Visually impaired pedestrians</span>
+        <span style="display:inline-block; background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+            padding:6px 14px; margin:4px; font-size:0.85rem;">🧑‍🦽 People with spinal cord injuries</span>
+        <span style="display:inline-block; background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+            padding:6px 14px; margin:4px; font-size:0.85rem;">🦿 Mobility device users</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -53,8 +71,8 @@ with col1:
     st.markdown("""
     <div class="info-card">
         <strong>🚧 The Problem</strong><br>
-        Shared e-scooters, garbage bins, construction barriers, and signboards 
-        are frequently left blocking sidewalks, curb cuts, and accessible routes 
+        Shared e-scooters, garbage bins, construction barriers, and signboards
+        are frequently left blocking sidewalks, curb cuts, and accessible routes
         across the GTA. This creates major barriers for people with disabilities.
     </div>
     """, unsafe_allow_html=True)
@@ -62,7 +80,7 @@ with col1:
     st.markdown("""
     <div class="info-card">
         <strong>⏱️ Time Impact</strong><br>
-        When a sidewalk is blocked, wheelchair users have to backtrack and find 
+        When a sidewalk is blocked, wheelchair users have to backtrack and find
         an alternate route — which can be very time-consuming and frustrating.
     </div>
     """, unsafe_allow_html=True)
@@ -71,7 +89,7 @@ with col2:
     st.markdown("""
     <div class="danger-card">
         <strong>⚠️ Safety Risk</strong><br>
-        Sometimes there is no alternate route, forcing wheelchair users to go 
+        Sometimes there is no alternate route, forcing wheelchair users to go
         down a curb — which is dangerous and can cause falls or injury.
         <br><br>
         <em>— Feedback from Spinal Cord Injury Ontario</em>
@@ -81,7 +99,7 @@ with col2:
     st.markdown("""
     <div class="warning-card">
         <strong>🏗️ Construction Zones</strong><br>
-        Construction is one of the most common causes of sidewalk obstructions, 
+        Construction is one of the most common causes of sidewalk obstructions,
         especially in downtown Toronto where construction is everywhere.
         <br><br>
         <em>— Feedback from Spinal Cord Injury Ontario</em>
@@ -145,12 +163,12 @@ st.markdown("### 🔮 Future Vision")
 st.markdown("""
 <div class="info-card">
     <strong>Google Maps Integration</strong><br>
-    We hope to integrate ScootClear with Google Maps so that obstruction 
-    reports show up when someone looks up a route — just like how transit 
-    disruptions currently appear. This would help reach the most people and 
+    We hope to integrate ScootClear with Google Maps so that obstruction
+    reports show up when someone looks up a route — just like how transit
+    disruptions currently appear. This would help reach the most people and
     make the biggest impact on sidewalk accessibility.
     <br><br>
-    <em>This was recommended by Spinal Cord Injury Ontario as the most 
+    <em>This was recommended by Spinal Cord Injury Ontario as the most
     effective way to get mass adoption.</em>
 </div>
 """, unsafe_allow_html=True)

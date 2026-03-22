@@ -64,16 +64,15 @@ with col_left:
 with col_right:
     # Live Safety Overview panel
     st.markdown(f"""
-    <div style="
+    <div class="dark-section" style="
         background: #0a1628;
         border-radius: 12px;
         padding: 20px;
-        color: #e2e8f0;
     ">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
             <div>
                 <strong style="font-size:1rem;">Live Safety Overview</strong><br>
-                <span style="font-size:0.75rem; color:#64748b;">
+                <span style="font-size:0.75rem; color:#94a3b8;">
                     Downtown Mississauga · Updated today
                 </span>
             </div>
@@ -143,29 +142,59 @@ col_impact, col_muni = st.columns(2)
 
 with col_impact:
     st.markdown("""
-    <div class="impact-section">
-        <h4>Accessibility Impact</h4>
-        <h3>Designed for the people who need safe sidewalks most</h3>
-        <p>ScootClear is built around public safety, inclusive mobility,
+    <div class="dark-section" style="
+        background: #0a1628;
+        border-radius: 12px;
+        padding: 24px;
+        margin: 15px 0;
+    ">
+        <h4 style="color:#06d6a0; text-transform:uppercase; font-size:0.75rem;
+            letter-spacing:2px; margin-bottom:4px;">Accessibility Impact</h4>
+        <h3 style="margin-top:0;">Designed for the people who need safe sidewalks most</h3>
+        <p style="color:#94a3b8; font-size:0.9rem;">ScootClear is built around public safety, inclusive mobility,
         and equitable access to city spaces.</p>
         <div style="margin-top: 12px;">
-            <span class="tag">Wheelchair users</span>
-            <span class="tag">Seniors</span>
-            <span class="tag">Parents with strollers</span>
-            <span class="tag">Visually impaired pedestrians</span>
-            <span class="tag">Spinal cord injury</span>
+            <span style="display:inline-block; background:rgba(255,255,255,0.08);
+                border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+                padding:6px 14px; margin:4px; font-size:0.85rem;">Wheelchair users</span>
+            <span style="display:inline-block; background:rgba(255,255,255,0.08);
+                border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+                padding:6px 14px; margin:4px; font-size:0.85rem;">Seniors</span>
+            <span style="display:inline-block; background:rgba(255,255,255,0.08);
+                border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+                padding:6px 14px; margin:4px; font-size:0.85rem;">Parents with strollers</span>
+            <span style="display:inline-block; background:rgba(255,255,255,0.08);
+                border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+                padding:6px 14px; margin:4px; font-size:0.85rem;">Visually impaired pedestrians</span>
+            <span style="display:inline-block; background:rgba(255,255,255,0.08);
+                border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+                padding:6px 14px; margin:4px; font-size:0.85rem;">Spinal cord injury</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 with col_muni:
     st.markdown("""
-    <div class="impact-section">
-        <h4>For Municipalities</h4>
-        <h3>Built to support city planning and community response</h3>
-        <div class="muni-item">Identify recurring sidewalk obstruction hotspots</div>
-        <div class="muni-item">Improve micromobility parking zone planning</div>
-        <div class="muni-item">Support bylaw enforcement and response prioritization</div>
-        <div class="muni-item">Strengthen accessibility-focused urban design decisions</div>
+    <div class="dark-section" style="
+        background: #0a1628;
+        border-radius: 12px;
+        padding: 24px;
+        margin: 15px 0;
+    ">
+        <h4 style="color:#06d6a0; text-transform:uppercase; font-size:0.75rem;
+            letter-spacing:2px; margin-bottom:4px;">For Municipalities</h4>
+        <h3 style="margin-top:0;">Built to support city planning and community response</h3>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+            border-radius:8px; padding:10px 16px; margin-bottom:8px; font-size:0.9rem;">
+            Identify recurring sidewalk obstruction hotspots</div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+            border-radius:8px; padding:10px 16px; margin-bottom:8px; font-size:0.9rem;">
+            Improve micromobility parking zone planning</div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+            border-radius:8px; padding:10px 16px; margin-bottom:8px; font-size:0.9rem;">
+            Support bylaw enforcement and response prioritization</div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+            border-radius:8px; padding:10px 16px; margin-bottom:8px; font-size:0.9rem;">
+            Strengthen accessibility-focused urban design decisions</div>
     </div>
     """, unsafe_allow_html=True)
