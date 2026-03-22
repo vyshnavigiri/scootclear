@@ -104,7 +104,7 @@ def apply_custom_css():
 
         /* Streamlit blockquote text */
         .stApp blockquote, .stApp blockquote p {
-            color: #FFFFFF !important;
+            color: #ffffff !important;
         }
 
         /* Streamlit tab labels */
