@@ -9,6 +9,12 @@ from helpers.theme import apply_page_config, apply_custom_css, show_top_navigati
 from helpers.file_storage import load_all_reports
 from helpers.hotspot_finder import calculate_hotspots
 
+# Auto-seed sample data if the database is empty
+from helpers.file_storage import load_all_reports
+if len(load_all_reports()) == 0:
+    import subprocess
+    subprocess.run(["python", "seed_data.py"])
+    
 # --- Page setup ---
 apply_page_config("ScootClear — Home")
 apply_custom_css()
