@@ -1,0 +1,16 @@
+name: Keep Streamlit App Alive1
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'   # runs every 4 hours
+  workflow_dispatch:          # allows manual trigger from GitHub UI
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Streamlit app
+        run: |
+          echo "Pinging scootclear.streamlit.app..."
+          curl -s -o /dev/null -w "HTTP status: %{http_code}\n" https://scootclear.streamlit.app/
+          echo "Done!"
