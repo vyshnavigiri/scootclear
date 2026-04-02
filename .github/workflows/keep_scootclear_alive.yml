@@ -12,5 +12,5 @@ jobs:
       - name: Ping Streamlit app
         run: |
           echo "Pinging scootclear.streamlit.app..."
-          curl -s -o /dev/null -w "HTTP status: %{http_code}\n" https://scootclear.streamlit.app/
+          curl -L -s -o /dev/null -w "HTTP status: %{http_code}\n" https://scootclear.streamlit.app/
           echo "Done!"
