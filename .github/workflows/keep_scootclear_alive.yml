@@ -1,4 +1,4 @@
-name: Keep Streamlit App Alive1
+name: Keep Streamlit App Alive
 
 on:
   schedule:
@@ -12,5 +12,12 @@ jobs:
       - name: Ping Streamlit app
         run: |
           echo "Pinging scootclear.streamlit.app..."
-          curl -L -s -o /dev/null -w "HTTP status: %{http_code}\n" https://scootclear.streamlit.app/
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://scootclear.streamlit.app/)
+          echo "HTTP status: $STATUS"
+          if [ "$STATUS" -eq 200 ] || [ "$STATUS" -eq 303 ]; then
+            echo "App is alive and responding!"
+          else
+            echo "Unexpected status code: $STATUS"
+            exit 1
+          fi
           echo "Done!"
