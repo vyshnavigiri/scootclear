@@ -17,18 +17,18 @@ from helpers.file_storage import load_all_reports
 from helpers.hotspot_finder import calculate_hotspots
 
 # --- Page setup ---
-apply_page_config("ScootClear — For Cities")
+apply_page_config("ScootClear - For Cities")
 apply_custom_css()
 show_top_navigation("For Cities")
 
-st.markdown("## 🏛️ For Cities — Safety Dashboard")
+st.markdown("## For Cities - Safety Dashboard")
 st.markdown("Analytics and insights for municipal planning, bylaw enforcement, and urban design.")
 
 # --- Load data ---
 reports = load_all_reports()
 
 if not reports:
-    st.info("📊 No data yet! Reports will appear here once they are submitted.")
+    st.info("No data yet! Reports will appear here once they are submitted.")
     st.stop()
 
 df = pd.DataFrame(reports)
@@ -40,7 +40,7 @@ df["hour"] = df["timestamp"].dt.hour
 # TIME PERIOD FILTER
 # ============================================================
 time_filter = st.selectbox(
-    "📅 Time Period",
+    "Time Period",
     ["Last 7 Days", "Last 30 Days", "Last 3 Months"],
     index=1,
 )
@@ -144,7 +144,7 @@ st.markdown("---")
 # ============================================================
 # DETECTION CONFIDENCE BREAKDOWN
 # ============================================================
-st.markdown("#### 🧠 Detection Confidence Breakdown")
+st.markdown("#### Detection Confidence Breakdown")
 st.markdown("How many reports had High, Medium, or Low confidence in the AI detection.")
 
 if "confidence" in filtered_df.columns:
@@ -163,7 +163,7 @@ else:
 # ============================================================
 # PHOTO AUTHENTICITY GAUGE
 # ============================================================
-st.markdown("#### 🔐 Photo Authenticity Overview")
+st.markdown("#### Photo Authenticity Overview")
 
 if "authenticity_score" in filtered_df.columns:
     avg_score = filtered_df["authenticity_score"].mean()
@@ -188,7 +188,7 @@ if "authenticity_score" in filtered_df.columns:
 # HOTSPOT RISK TABLE
 # ============================================================
 st.markdown("---")
-st.markdown("#### 🔥 Hotspot Risk Table")
+st.markdown("#### Hotspot Risk Table")
 st.markdown("Areas colour-coded by risk level based on report frequency.")
 
 hotspots = calculate_hotspots(reports)

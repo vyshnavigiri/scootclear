@@ -29,9 +29,9 @@ st.markdown("""
 <div style="display:flex; gap:20px; padding:10px 16px; background:#ffffff;
      border-radius:10px; border:1px solid #bae6fd; margin-bottom:15px;
      flex-wrap:wrap; justify-content:center; font-size:0.9rem;">
-    <span>🔴 <strong>High Risk</strong> — Frequent obstructions</span>
-    <span>🟠 <strong>Moderate Risk</strong> — Multiple reports</span>
-    <span>🟢 <strong>Low Risk</strong> — Occasional reports</span>
+    <span>🔴 <strong>High Risk</strong> - Frequent obstructions</span>
+    <span>🟠 <strong>Moderate Risk</strong> - Multiple reports</span>
+    <span>🟢 <strong>Low Risk</strong> - Occasional reports</span>
 </div>
 """, unsafe_allow_html=True)
 
@@ -39,7 +39,7 @@ st.markdown("""
 reports = load_all_reports()
 
 if not reports:
-    st.info("🗺️ No reports yet! Go to **Report Issue** to submit the first one.")
+    st.info("No reports yet! Go to **Report Issue** to submit the first one.")
     # Show empty GTA map
     m = folium.Map(location=[43.6532, -79.3832], zoom_start=11, tiles="CartoDB positron")
     st_folium(m, use_container_width=True, height=500)
@@ -93,8 +93,8 @@ if show_markers:
 
         popup_text = f"""
         <b>{cat}</b><br>
-        📍 {row.get('location_name', 'N/A')}<br>
-        🕐 {str(row.get('timestamp', ''))[:16]}<br>
+         {row.get('location_name', 'N/A')}<br>
+         {str(row.get('timestamp', ''))[:16]}<br>
         <em>{str(row.get('description', ''))[:80]}</em>
         """
 
@@ -125,7 +125,7 @@ st_folium(m, use_container_width=True, height=500)
 # ============================================================
 # TOP PROBLEM LOCATIONS
 # ============================================================
-st.markdown("### 📍 Top Problem Locations")
+st.markdown("### Top Problem Locations")
 st.markdown("Intersections and areas with the most obstruction reports.")
 
 location_counts = df["location_name"].value_counts().head(10).reset_index()
@@ -151,7 +151,7 @@ if not location_counts.empty:
 # ============================================================
 # OBSTRUCTION TYPE DISTRIBUTION
 # ============================================================
-st.markdown("### 📊 Obstruction Type Distribution")
+st.markdown("### Obstruction Type Distribution")
 st.markdown("Breakdown of what kinds of obstructions are being reported.")
 
 type_counts = df["category"].value_counts().reset_index()
@@ -172,7 +172,7 @@ if not type_counts.empty:
 # ============================================================
 # HOTSPOT SUMMARY TABLE
 # ============================================================
-st.markdown("### 📋 Hotspot Summary Table")
+st.markdown("### Hotspot Summary Table")
 hotspots = calculate_hotspots(reports)
 if not hotspots.empty:
     display_df = hotspots[["lat", "lon", "count", "risk_level", "description", "types"]].copy()

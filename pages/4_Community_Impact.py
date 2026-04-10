@@ -13,11 +13,11 @@ from helpers.theme import apply_page_config, apply_custom_css, show_top_navigati
 from helpers.file_storage import load_all_reports
 
 # --- Page setup ---
-apply_page_config("ScootClear — Community Impact")
+apply_page_config("ScootClear - Community Impact")
 apply_custom_css()
 show_top_navigation("Community Impact")
 
-st.markdown("## ♿ Community Impact")
+st.markdown("## Community Impact")
 st.markdown("ScootClear is designed for the people who need safe sidewalks most.")
 
 # ============================================================
@@ -40,22 +40,22 @@ st.markdown("""
     <div style="margin-top: 15px;">
         <span style="display:inline-block; background:rgba(255,255,255,0.08);
             border:1px solid rgba(255,255,255,0.15); border-radius:6px;
-            padding:6px 14px; margin:4px; font-size:0.85rem;">♿ Wheelchair users</span>
+            padding:6px 14px; margin:4px; font-size:0.85rem;">Wheelchair users</span>
         <span style="display:inline-block; background:rgba(255,255,255,0.08);
             border:1px solid rgba(255,255,255,0.15); border-radius:6px;
-            padding:6px 14px; margin:4px; font-size:0.85rem;">👴 Seniors</span>
+            padding:6px 14px; margin:4px; font-size:0.85rem;">Seniors</span>
         <span style="display:inline-block; background:rgba(255,255,255,0.08);
             border:1px solid rgba(255,255,255,0.15); border-radius:6px;
-            padding:6px 14px; margin:4px; font-size:0.85rem;">👶 Parents with strollers</span>
+            padding:6px 14px; margin:4px; font-size:0.85rem;">Parents with strollers</span>
         <span style="display:inline-block; background:rgba(255,255,255,0.08);
             border:1px solid rgba(255,255,255,0.15); border-radius:6px;
-            padding:6px 14px; margin:4px; font-size:0.85rem;">🦯 Visually impaired pedestrians</span>
+            padding:6px 14px; margin:4px; font-size:0.85rem;">Visually impaired pedestrians</span>
         <span style="display:inline-block; background:rgba(255,255,255,0.08);
             border:1px solid rgba(255,255,255,0.15); border-radius:6px;
-            padding:6px 14px; margin:4px; font-size:0.85rem;">🧑‍🦽 People with spinal cord injuries</span>
+            padding:6px 14px; margin:4px; font-size:0.85rem;">People with spinal cord injuries</span>
         <span style="display:inline-block; background:rgba(255,255,255,0.08);
             border:1px solid rgba(255,255,255,0.15); border-radius:6px;
-            padding:6px 14px; margin:4px; font-size:0.85rem;">🦿 Mobility device users</span>
+            padding:6px 14px; margin:4px; font-size:0.85rem;">Mobility device users</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -70,7 +70,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("""
     <div class="info-card">
-        <strong>🚧 The Problem</strong><br>
+        <strong>The Problem</strong><br>
         Shared e-scooters, garbage bins, construction barriers, and signboards
         are frequently left blocking sidewalks, curb cuts, and accessible routes
         across the GTA. This creates major barriers for people with disabilities.
@@ -79,7 +79,7 @@ with col1:
 
     st.markdown("""
     <div class="info-card">
-        <strong>⏱️ Time Impact</strong><br>
+        <strong>Time Impact</strong><br>
         When a sidewalk is blocked, wheelchair users have to backtrack and find
         an alternate route — which can be very time-consuming and frustrating.
     </div>
@@ -88,9 +88,9 @@ with col1:
 with col2:
     st.markdown("""
     <div class="danger-card">
-        <strong>⚠️ Safety Risk</strong><br>
+        <strong>Safety Risk</strong><br>
         Sometimes there is no alternate route, forcing wheelchair users to go
-        down a curb — which is dangerous and can cause falls or injury.
+        down a curb, which is dangerous and can cause falls or injury.
         <br><br>
         <em>— Feedback from Spinal Cord Injury Ontario</em>
     </div>
@@ -98,7 +98,7 @@ with col2:
 
     st.markdown("""
     <div class="warning-card">
-        <strong>🏗️ Construction Zones</strong><br>
+        <strong>Construction Zones</strong><br>
         Construction is one of the most common causes of sidewalk obstructions,
         especially in downtown Toronto where construction is everywhere.
         <br><br>
@@ -110,7 +110,7 @@ with col2:
 # IMPACT METRICS
 # ============================================================
 st.markdown("---")
-st.markdown("### 📈 Impact Metrics")
+st.markdown("### Impact Metrics")
 
 reports = load_all_reports()
 
@@ -153,22 +153,5 @@ if reports:
                       xaxis_title="Obstruction Type", yaxis_title="Number of Reports")
     st.plotly_chart(fig, use_container_width=True)
 else:
-    st.info("📊 Impact metrics will appear once reports are submitted.")
-
-# ============================================================
-# FUTURE VISION
-# ============================================================
-st.markdown("---")
-st.markdown("### 🔮 Future Vision")
-st.markdown("""
-<div class="info-card">
-    <strong>Google Maps Integration</strong><br>
-    We hope to integrate ScootClear with Google Maps so that obstruction
-    reports show up when someone looks up a route — just like how transit
-    disruptions currently appear. This would help reach the most people and
-    make the biggest impact on sidewalk accessibility.
-    <br><br>
-    <em>This was recommended by Spinal Cord Injury Ontario as the most
-    effective way to get mass adoption.</em>
-</div>
+    st.info("Impact metrics will appear once reports are submitted.")
 """, unsafe_allow_html=True)

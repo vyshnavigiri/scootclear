@@ -14,7 +14,7 @@ apply_page_config("ScootClear — Re-Routing Alerts")
 apply_custom_css()
 show_top_navigation("Re-Routing Alerts")
 
-st.markdown("## 🔔 Re-Routing Alerts")
+st.markdown("## Re-Routing Alerts")
 
 # --- Upcoming feature banner ---
 st.markdown("""
@@ -101,7 +101,7 @@ st.markdown("""
 # --- Future integration note ---
 st.markdown("""
 <div class="warning-card">
-    <strong>🔮 Future Vision:</strong> We hope to eventually integrate this
+    <strong>Future Vision:</strong> We hope to eventually integrate this
     with <strong>Google Maps</strong> so that re-routing alerts show up when
     someone looks up a route — just like how transit disruptions currently appear.
     This was recommended by SCI Ontario as the best way to reach the most people.

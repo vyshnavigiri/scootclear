@@ -14,18 +14,18 @@ from helpers.theme import apply_page_config, apply_custom_css, show_top_navigati
 from helpers.file_storage import load_all_reports
 
 # --- Page setup ---
-apply_page_config("ScootClear — Report History")
+apply_page_config("ScootClear - Report History")
 apply_custom_css()
 show_top_navigation("Home")
 
-st.markdown("## 📜 Report History")
+st.markdown("## Report History")
 st.markdown("Browse all submitted obstruction reports.")
 
 # --- Load data ---
 reports = load_all_reports()
 
 if not reports:
-    st.info("📜 No reports yet! Submit one on the Report Issue page.")
+    st.info("No reports yet! Submit one on the Report Issue page.")
     st.stop()
 
 df = pd.DataFrame(reports)

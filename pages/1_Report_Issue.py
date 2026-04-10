@@ -25,7 +25,7 @@ apply_custom_css()
 show_top_navigation("Report Issue")
 
 # --- Page title ---
-st.markdown("## 📋 Report a Sidewalk Obstruction")
+st.markdown("## Report a Sidewalk Obstruction")
 st.markdown("Help make GTA sidewalks safer by reporting obstructions you encounter.")
 
 # ============================================================
@@ -56,7 +56,7 @@ with st.form("report_form", clear_on_submit=True):
 
     with col2:
         # Location inputs — street name and postal code
-        st.markdown("**📍 Location**")
+        st.markdown("**Location**")
         street_intersection = st.text_input(
             "Street Intersection",
             placeholder="Example: King and Spadina, Toronto",
@@ -69,7 +69,7 @@ with st.form("report_form", clear_on_submit=True):
         )
 
     # Photo upload
-    st.markdown("**📸 Upload a Photo of the Obstruction**")
+    st.markdown("**Upload a Photo of the Obstruction**")
     uploaded_file = st.file_uploader(
         "Choose a JPG or PNG image (max 10 MB)",
         type=["jpg", "jpeg", "png"],
@@ -85,10 +85,10 @@ with st.form("report_form", clear_on_submit=True):
 if submitted:
     # Check that required fields are filled
     if not uploaded_file:
-        st.error("📸 Please upload a photo before submitting.")
+        st.error("Please upload a photo before submitting.")
         st.stop()
     if not street_intersection:
-        st.warning("📍 Please enter a street intersection (e.g., King and Spadina, Toronto).")
+        st.warning("Please enter a street intersection (e.g., King and Spadina, Toronto).")
         st.stop()
 
     # Open the uploaded image
@@ -98,7 +98,7 @@ if submitted:
     # ----------------------------------------------------------
     # GEOCODING: Convert street intersection to lat/long
     # ----------------------------------------------------------
-    st.markdown("### 📍 Finding Location Coordinates")
+    st.markdown("### Finding Location Coordinates")
     with st.spinner("Looking up the location..."):
         geo_result = get_coordinates(street_intersection, postal_code)
 
@@ -110,7 +110,7 @@ if submitted:
         st.markdown(f"""
         <div class="success-card">
             ✅ <strong>Location found!</strong><br>
-            📍 {geo_result['full_address']}<br>
+            {geo_result['full_address']}<br>
             <span style="color:#64748b; font-size:0.85rem;">
                 Coordinates: {latitude}, {longitude} (calculated automatically)
             </span>
@@ -130,7 +130,7 @@ if submitted:
     # ----------------------------------------------------------
     # STEP 1: IMAGE AUTHENTICITY VALIDATION
     # ----------------------------------------------------------
-    st.markdown("### 🔐 Step 1: Image Authenticity Validation")
+    st.markdown("### Step 1: Image Authenticity Validation")
     with st.spinner("Checking if the photo is genuine..."):
         validation_result = check_image_is_genuine(img)
 
@@ -185,7 +185,7 @@ if submitted:
     # ----------------------------------------------------------
     # STEP 2: AI OBSTRUCTION DETECTION
     # ----------------------------------------------------------
-    st.markdown("### 🧠 Step 2: AI Obstruction Detection")
+    st.markdown("### Step 2: AI Obstruction Detection")
     with st.spinner("Analysing the image for obstructions..."):
         detection_result = detect_obstruction(img, category)
 
@@ -205,7 +205,7 @@ if submitted:
         <strong>Detected:</strong> {detection_result['category']}<br>
         <strong>Confidence:</strong>
         <span style="color:{conf_colour}; font-weight:bold;">{confidence} ({conf_pct}%)</span><br><br>
-        💡 <em>{detection_result['message']}</em>
+         <em>{detection_result['message']}</em>
     </div>
     """, unsafe_allow_html=True)
 
@@ -216,7 +216,7 @@ if submitted:
     # ----------------------------------------------------------
     # STEP 3: RECURRING HOTSPOT CHECK
     # ----------------------------------------------------------
-    st.markdown("### 📍 Step 3: Recurring Hotspot Check")
+    st.markdown("### Step 3: Recurring Hotspot Check")
 
     existing_reports = load_all_reports()
     nearby_reports = find_nearby_reports(latitude, longitude, existing_reports, radius_km=0.3)
@@ -237,14 +237,14 @@ if submitted:
     elif len(nearby_reports) >= 1:
         st.markdown(f"""
         <div class="info-card">
-            📍 <strong>{len(nearby_reports)} other report(s)</strong> exist near this location.
+             <strong>{len(nearby_reports)} other report(s)</strong> exist near this location.
             We are monitoring this area.
         </div>
         """, unsafe_allow_html=True)
     else:
         st.markdown("""
         <div class="success-card">
-            ✅ No previous reports near this location. This appears to be a new report area.
+            No previous reports near this location. This appears to be a new report area.
         </div>
         """, unsafe_allow_html=True)
 
@@ -270,7 +270,7 @@ if submitted:
 
     st.markdown("""
     <div class="success-card">
-        <strong>✅ Report submitted successfully!</strong><br>
+        <strong> Report submitted successfully!</strong><br>
         Thank you for helping make GTA sidewalks safer and more accessible.
         Your report will appear on the Hotspot Map and Safety Dashboard.
     </div>
