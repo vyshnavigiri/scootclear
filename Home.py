@@ -16,7 +16,7 @@ if len(load_all_reports()) == 0:
     subprocess.run(["python", "seed_data.py"])
     
 # --- Page setup ---
-apply_page_config("ScootClear — Home")
+apply_page_config("ScootClear - Home")
 apply_custom_css()
 show_top_navigation("Home")
 
@@ -63,9 +63,9 @@ with col_left:
     # CTA Buttons
     btn_col1, btn_col2, btn_col3 = st.columns(3)
     with btn_col1:
-        st.page_link("pages/2_Hotspot_Map.py", label="View Hotspot Map", icon="🗺️")
+        st.page_link("pages/2_Hotspot_Map.py", label="View Hotspot Map")
     with btn_col2:
-        st.page_link("pages/1_Report_Issue.py", label="Report an Issue", icon="📋")
+        st.page_link("pages/1_Report_Issue.py", label="Report an Issue")
 
 with col_right:
     # Live Safety Overview panel

@@ -49,7 +49,7 @@ st.markdown("""
 <div class="info-card">
     <strong>2. Alert Message</strong><br>
     Users approaching the area will see a message like:<br>
-    <em>"⚠️ Obstruction reported on King St near Spadina.
+    <em>"Obstruction reported on King St near Spadina.
     Please consider re-routing your path to another street to avoid
     accessibility barriers in this area."</em>
 </div>
@@ -103,7 +103,7 @@ st.markdown("""
 <div class="warning-card">
     <strong>Future Vision:</strong> We hope to eventually integrate this
     with <strong>Google Maps</strong> so that re-routing alerts show up when
-    someone looks up a route — just like how transit disruptions currently appear.
+    someone looks up a route. Just like how transit disruptions currently appear.
     This was recommended by SCI Ontario as the best way to reach the most people.
 </div>
 """, unsafe_allow_html=True)
