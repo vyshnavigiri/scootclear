@@ -154,4 +154,4 @@ if reports:
     st.plotly_chart(fig, use_container_width=True)
 else:
     st.info("Impact metrics will appear once reports are submitted.")
-""", unsafe_allow_html=True)
+# """, unsafe_allow_html=True)
